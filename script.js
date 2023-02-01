@@ -83,3 +83,25 @@ id_humidity.innerHTML=humiditydata
 
 }
 
+function getlocation(){
+
+    if(navigator.geolocation){
+
+        navigator.geolocation.getCurrentPosition((pos)=>{
+
+            let lat=pos.coords.latitude;
+            let long=pos.coords.longitude;
+
+            console.log(lat,long);
+
+            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=ae29da81c95f7df18ec364ddb8fc0e73`).
+            then(res=>res.json()).then(data=>displayWeather(data))
+
+        })
+    }
+
+
+
+
+    
+}
